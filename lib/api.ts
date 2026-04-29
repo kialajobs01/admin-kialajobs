@@ -2,7 +2,7 @@ import { useAuthStore } from '@/store/auth.store';
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || 'https://kiala-jobs-api.onrender.com/api/v1',
+  baseURL: process.env.NEXT_PUBLIC_API_URL || 'https://api.kialajobs.com/api/v1',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -10,8 +10,8 @@ export const api = axios.create({
 
 if (typeof window !== 'undefined') {
   api.interceptors.request.use((config) => {
-    const { token } = useAuthStore.getState(); 
-    
+    const { token } = useAuthStore.getState();
+
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -31,7 +31,7 @@ if (typeof window !== 'undefined') {
 
 export const serverApi = (token?: string) => {
   const instance = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_URL || 'https://kiala-jobs-api.onrender.com/api/v1',
+    baseURL: process.env.NEXT_PUBLIC_API_URL || 'https://api.kialajobs.com/api/v1',
     headers: {
       'Content-Type': 'application/json',
       ...(token && { Authorization: `Bearer ${token}` }),
