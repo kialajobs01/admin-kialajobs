@@ -9,8 +9,7 @@ async function getLogs() {
     const cookieStore = await cookies();
     const token = cookieStore.get('auth-token')?.value;
 
-    if (!token) {
-      console.log('No token found in cookies');
+    if (!token) { 
       return [];
     }
 

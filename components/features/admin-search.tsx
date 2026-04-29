@@ -23,8 +23,7 @@ export default function AdminSearch() {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+  const onSubmit = (values: z.infer<typeof formSchema>) => { 
   };
 
   const handleItemSelect = (type: string, id: string) => {

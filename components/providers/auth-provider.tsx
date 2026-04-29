@@ -20,12 +20,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
     if (hasHydrated && !isInitialized) {
       const initialize = async () => {
         try {
-          console.log('🔄 AuthProvider - Initializing auth...');
           await initializeAuth();
         } catch (error) {
           console.error('AuthProvider - Initialization failed:', error);
         } finally {
-          console.log('✅ AuthProvider - Initialization completed');
           setIsInitialized(true);
         }
       };
@@ -36,37 +34,22 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   useEffect(() => {
     if (!isInitialized || isLoading) return;
-
-    console.log('🔄 AuthProvider - Route check:', {
-      hasToken: !!token,
-      userRole: user?.role,
-      pathname,
-      isInitialized,
-      isLoading
-    });
-
     const cookieToken = getAuthCookie();
-    console.log('🍪 AuthProvider - Cookie check:', !!cookieToken);
-
     if (token && user && (user.role === 'ADMIN' || user.role === 'SUPER_ADMIN') && pathname === '/login') {
-      console.log('➡️ Redirecting to dashboard');
       router.push('/dashboard');
       return;
     }
 
     if (!token && pathname !== '/login') {
-      console.log('➡️ Redirecting to login - no token');
       router.push('/login');
       return;
     }
 
-    if (token && user && user.role !== 'ADMIN' && user.role !== 'SUPER_ADMIN') {
-      console.log('➡️ Redirecting to main site - not admin');
+    if (token && user && user.role !== 'ADMIN' && user.role !== 'SUPER_ADMIN') { 
       window.location.href = 'https://www.kialajobs.com';
       return;
     }
 
-    console.log('✅ AuthProvider - No redirect needed');
   }, [token, user, pathname, isInitialized, isLoading, router]);
 
   if (!isInitialized || isLoading) {

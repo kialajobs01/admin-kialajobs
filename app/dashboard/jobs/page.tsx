@@ -1,7 +1,7 @@
 export const dynamic = 'force-dynamic'
 
 
-import { JobsGrid } from '@/components/features/jobs/jobs-grid'; 
+import { JobsGrid } from '@/components/features/jobs/jobs-grid';
 import { api } from '@/lib/api';
 import { cookies } from 'next/headers';
 
@@ -67,8 +67,7 @@ async function getJobs(): Promise<Job[]> {
         const cookieStore = await cookies();
         const token = cookieStore.get('auth-token')?.value;
 
-        if (!token) {
-            console.log('No token found in cookies');
+        if (!token) { 
             return [];
         }
 

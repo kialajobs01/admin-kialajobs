@@ -12,8 +12,7 @@ export default async function DeleteRequestsPage() {
     let error = null;
 
     try {
-        deleteRequests = await usersService.getDeleteRequests(token || '');
-        console.log("Dados da requisicao", deleteRequests);
+        deleteRequests = await usersService.getDeleteRequests(token || ''); 
     } catch (err) {
         console.error("Erro ao buscar pedidos:", err);
         error = err;
@@ -35,7 +34,7 @@ export default async function DeleteRequestsPage() {
                             Gerencie os pedidos de eliminação de conta dos usuários
                         </p>
                     </div>
-                    
+
                     {/* Estatísticas rápidas no header para mobile */}
                     <div className="flex sm:hidden items-center gap-2">
                         <div className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-medium">

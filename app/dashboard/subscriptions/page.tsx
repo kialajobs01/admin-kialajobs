@@ -13,8 +13,7 @@ export default async function SubscriptionsPage() {
     let error = null;
 
     try {
-        subscriptionsData = await subscriptionsService.getAllSubscriptions(token || '');
-        console.log("Dados das subscrições:", subscriptionsData);
+        subscriptionsData = await subscriptionsService.getAllSubscriptions(token || ''); 
     } catch (err) {
         console.error("Erro ao buscar subscrições:", err);
         error = err;
@@ -30,7 +29,7 @@ export default async function SubscriptionsPage() {
                             Gerencie todas as subscrições da plataforma
                         </p>
                     </div>
-                     
+
                     {subscriptionsData && (
                         <div className="flex sm:hidden items-center gap-2">
                             <div className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">

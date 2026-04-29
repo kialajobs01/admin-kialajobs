@@ -13,10 +13,7 @@ export default async function TransactionsPage() {
 
     try {
         const response = await paymentsService.getAllPayments(token || '');
-        console.log('Resposta da API:', response);
-        
         paymentsData = response; 
-        console.log("Dados das transações:", paymentsData);
     } catch (err) {
         console.error("Erro ao buscar transações:", err);
         error = err;
@@ -33,7 +30,7 @@ export default async function TransactionsPage() {
                             Visualize e gerencie todas as transações da plataforma
                         </p>
                     </div>
-                    
+
                     {/* Estatísticas rápidas no header para mobile */}
                     {paymentsData && (
                         <div className="flex sm:hidden items-center gap-2">

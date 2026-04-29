@@ -201,11 +201,10 @@ export const usersService = {
         }
     },
 
- 
+
 async getDeleteRequests(token: string): Promise<User[]> {
     try {
         if (!token) {
-            console.log('No token found in cookies');
             return [];
         }
 
@@ -213,11 +212,6 @@ async getDeleteRequests(token: string): Promise<User[]> {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
-        });
-
-        console.log('API Response:', {
-            status: response.status,
-            data: response.data
         });
  
         if (response.data && Array.isArray(response.data)) {
@@ -235,7 +229,7 @@ async getDeleteRequests(token: string): Promise<User[]> {
             status: error.response?.status,
             data: error.response?.data
         });
-         
+
         return [];
     }
 },

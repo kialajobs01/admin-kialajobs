@@ -34,12 +34,9 @@ export default function LoginPage() {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      console.log('🔄 Starting login submission...');
       const response = await login(values.email, values.password);
 
-      if (response?.status === "success") {
-        console.log('✅ Login successful in store');
-        // Não precisa chamar checkAuth() aqui, o AuthProvider vai detectar a mudança
+      if (response?.status === "success") {  
       } else if (error?.includes('Acesso negado')) {
         setShowRedirectMessage(true);
 
