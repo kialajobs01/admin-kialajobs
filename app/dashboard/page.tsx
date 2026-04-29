@@ -6,7 +6,7 @@ import UsersList from '@/components/features/users';
 import { statsService } from '@/services/stats.service';
 import { useEffect, useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
- 
+
 export default function Dashboard() {
   const [stats, setStats] = useState({
     totalJobs: 0,
@@ -56,7 +56,7 @@ export default function Dashboard() {
     return (
       <div className=" ">
         <div className="flex flex-col">
-          <main className="flex flex-1 flex-col gap-6 p-6"> 
+          <main className="flex flex-1 flex-col gap-6 p-6">
             <div className="flex justify-between items-center">
               <div className="space-y-2">
                 <div className="h-7 bg-gray-200 dark:bg-gray-700 rounded w-48 animate-pulse"></div>
@@ -64,7 +64,7 @@ export default function Dashboard() {
               </div>
               <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-32 animate-pulse"></div>
             </div>
-             
+
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {[...Array(4)].map((_, i) => (
                 <div key={i} className="rounded-xl border bg-card p-6 animate-pulse">
@@ -82,7 +82,7 @@ export default function Dashboard() {
                 </div>
               ))}
             </div>
- 
+
             <div className="grid gap-6 md:grid-cols-2">
               <div className="rounded-xl border bg-card p-6 animate-pulse">
                 <div className="flex items-center justify-between mb-6">
@@ -96,7 +96,7 @@ export default function Dashboard() {
                   <div className="flex items-end justify-between h-40">
                     {[...Array(5)].map((_, i) => (
                       <div key={i} className="flex flex-col items-center gap-2 flex-1">
-                        <div 
+                        <div
                           className="w-10 bg-gradient-to-t from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 rounded-t"
                           style={{ height: `${Math.random() * 70 + 30}%` }}
                         ></div>
@@ -140,7 +140,7 @@ export default function Dashboard() {
                 </div>
                 <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded w-32"></div>
               </div>
-              
+
               {/* Filtros */}
               <div className="flex gap-4 mb-6">
                 <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded flex-1"></div>
@@ -156,7 +156,7 @@ export default function Dashboard() {
                     <div key={i} className="h-4 bg-gray-200 dark:bg-gray-700 rounded"></div>
                   ))}
                 </div>
-                
+
                 {/* Linhas */}
                 {[...Array(6)].map((_, rowIndex) => (
                   <div key={rowIndex} className="grid grid-cols-5 gap-4 py-4">
@@ -194,10 +194,10 @@ export default function Dashboard() {
           <div className="flex justify-between items-center">
             <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Visão Geral</h2>
             <span className="text-sm text-muted-foreground dark:text-gray-400">
-              Contre as Horas: {lastUpdated}
+              Horas: {lastUpdated}
             </span>
           </div>
-          
+
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <StatsCard
               title="Total de Trabalhos"
@@ -234,7 +234,7 @@ export default function Dashboard() {
               variant={stats.growthRate > 0 ? "success" : "destructive"}
             />
           </div>
-          
+
           <div className="">
             <UsersList />
           </div>
@@ -242,7 +242,7 @@ export default function Dashboard() {
       </div>
 
       <Dialog open={selectedCard !== null} onOpenChange={closeModal}>
-        <DialogContent className="sm:max-w-[600px] dark:bg-gray-800 dark:border-gray-700">
+        <DialogContent className="sm:max-w-[600px] ">
           {selectedCard === 'jobs' && (
             <>
               <DialogHeader>
@@ -278,7 +278,7 @@ export default function Dashboard() {
               </div>
             </>
           )}
-          
+
           {selectedCard === 'users' && (
             <>
               <DialogHeader>
@@ -302,8 +302,8 @@ export default function Dashboard() {
                 <div className="mt-4">
                   <h3 className="text-lg font-semibold mb-2 dark:text-gray-100">Distribuição</h3>
                   <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-gradient-to-r from-blue-500 to-green-500" 
+                    <div
+                      className="h-full bg-gradient-to-r from-blue-500 to-green-500"
                       style={{
                         width: `${(stats.clientsCount / stats.totalUsers) * 100}%`
                       }}
@@ -317,7 +317,7 @@ export default function Dashboard() {
               </div>
             </>
           )}
-          
+
           {selectedCard === 'payments' && (
             <>
               <DialogHeader>
@@ -340,7 +340,7 @@ export default function Dashboard() {
               </div>
             </>
           )}
-          
+
           {selectedCard === 'growth' && (
             <>
               <DialogHeader>

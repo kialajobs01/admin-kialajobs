@@ -65,7 +65,7 @@ function DialogContent({
       <DialogPrimitive.Content
         {...props}
         className={cn(
-          "bg-background fixed z-50 grid gap-4 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out blur-2xl",
+          "bg-background fixed z-50 grid gap-4 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out backdrop-blur-md",
           fullscreen
             ? "inset-0 h-screen w-screen max-w-none rounded-none p-0"
             : size === "wide"
